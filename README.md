@@ -24,7 +24,11 @@ public class CustomEvent implements Event {
 ```
 ```java
 public class CustomListener implements Listener {
-    @EventHandler
+    // You can adjust when and how your events are handled by changing the following optional attributes
+    @EventHandler( 
+        priority = EventPriority.LOW,    // default EventPriority.NORMAL 
+        ignoreCancelled = true           // default false
+    )
     public void onEvent(CustomEvent event) { // Your custom event here
         // Code to execute when the event is called
     }
