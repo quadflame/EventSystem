@@ -5,7 +5,7 @@ import org.junit.Test;
 public class TestOfEventSystem {
 
     @Test
-    public void test() {
+    public void eventTest() {
         EventManager eventManager = new EventManager();
 
         eventManager.register(new Listener() {
@@ -40,5 +40,21 @@ public class TestOfEventSystem {
 
         System.out.println("Calling TestEvent");
         eventManager.call(new TestEvent());
+    }
+
+    @Test
+    public void notAnEventTest() {
+        AbstractEventManager<NotAnEvent> notAnEventManager = new AbstractEventManager<>();
+
+        System.out.println();
+
+        notAnEventManager.register(new Listener() {
+            @EventHandler
+            public void onNotAnEvent(NotAnEvent event) {
+                System.out.println("Not an event received");
+            }
+        });
+
+        notAnEventManager.call(new NotAnEvent());
     }
 }

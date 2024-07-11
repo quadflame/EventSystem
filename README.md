@@ -48,3 +48,16 @@ eventManager.call(new CustomEvent());
 // Unregister event listeners when you are finished with them
 eventManager.register(customListener);
 ```
+However, if you wanted to create a an event system for objects you cannot modify, you can use the `AbstractEventManager<T>` class to create events of your specified type. This could be useful in scenarios similar to using the `Packet<?>` class in spigot development.
+```java
+AbstractEventManager<NotAnEvent> notAnEventManager = new AbstractEventManager<>();
+
+notAnEventManager.register(new Listener() {
+    @EventHandler
+    public void onNotAnEvent(NotAnEvent event) {
+        System.out.println("NotAnEvent received");
+    }
+});
+
+notAnEventManager.call(new NotAnEvent());
+```
