@@ -35,7 +35,7 @@ public class CustomListener implements Listener {
 }
 ```
 ```java
-// Create your an event manager
+// Create your own event manager
 EventManager eventManager = new EventManager();
 
 // Register event listener
